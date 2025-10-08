@@ -27,14 +27,10 @@
 
 /*
     Exercise:
-
-    1. Once the "LinkedList" class is implemented and tested, use it to build the "LinkedListStack" class. 
-    
-    2. Define a class called "LinkedListStack" that represents the stack using a linked list. 
+     2. Define a class called "LinkedListStack" that represents the stack using a linked list. 
     The class should have a private member to store the top node pointer.
-
+  
     3. Implement a constructor for the LinkedListStack class that initializes the top pointer to nullptr, indicating an empty stack.
-
     4. Implement a member function in the LinkedListStack class called "push", 
     which takes a value as a parameter and pushes (inserts) that value onto the top of the stack.
 
@@ -93,10 +89,26 @@ private:
         delete temp;
      }
      void getHead(){
+        if(head==nullptr) return;
+
         cout<<"Peek: ["<<head->data<<" | "<<head<<"]"<<endl;
      }
      bool isEmpty(){
         return head==nullptr;
+     }
+
+     void displayStack(){
+        if(head==nullptr){
+            cout<<"Stack is empty!"<<endl;
+            return;
+        }
+        Node* temp = head;
+        cout<<"Display Stack: ";
+        while(temp!=nullptr){
+            cout<<"["<<temp->data<<" | "<<temp<<"] ---> ";
+            temp = temp->next;
+        }
+        cout<<"NULL"<<endl;
      }
 
 };
@@ -118,8 +130,14 @@ public:
             cout << "Nothing to pop (^_^)" << endl;
             return;
         }
-        list.delete_front();
+        else{
+            list.delete_front();
+            cout<<endl;
+            cout<<"After pop:"<<endl;
+            list.displayStack();    
         count--;
+        }
+       
     }
 
     void peek() {
@@ -127,6 +145,7 @@ public:
             cout << "Nothing to peek (^_^)" << endl;
             return;
         }
+
         list.getHead();
     }
 
@@ -137,6 +156,10 @@ public:
     int size() {
         return count;
     }
+    void displayStack(){
+        list.displayStack();
+    }   
+
 
     // ~LinkedListStack() {
     //     while (!isEmpty()) {
@@ -151,11 +174,13 @@ int main() {
     LinkedListStack stack;
 
     stack.push(2);
-    stack.push(3);
-
+     stack.push(3);
+        stack.push(4);
+         stack.push(5);
+            stack.push(6);
     cout << "Size: " << stack.size() << endl << endl;
 
-    // stack.displayStack();
+    stack.displayStack();
     // stack.pop();
     // stack.displayStack();
 
@@ -163,8 +188,9 @@ int main() {
     // stack.peek();
     // cout << endl;
 
-    // stack.pop().pop().pop().pop().pop();
-
+    stack.pop();
+    stack.peek();
+    cout << endl;
     // stack.displayStack();
 
 
