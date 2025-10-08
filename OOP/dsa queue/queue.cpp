@@ -147,11 +147,11 @@ public:
     int size() {
         return count;
     }   
-    // ~Queue() {
-    //     while (!isEmpty()) {
-    //         dequeue();
-    //     }
-    // }
+    ~Queue() {
+        while (!isEmpty()) {
+            dequeue();
+        }
+    }
 };
 
 
