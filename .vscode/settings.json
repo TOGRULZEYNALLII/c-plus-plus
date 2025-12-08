@@ -8,6 +8,14 @@
         "string_view": "cpp",
         "bitset": "cpp",
         "initializer_list": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "vector": "cpp",
+        "functional": "cpp",
+        "iomanip": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp",
+        "tuple": "cpp"
     }
 }
