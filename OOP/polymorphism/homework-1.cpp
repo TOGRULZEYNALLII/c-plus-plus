@@ -66,7 +66,9 @@ private:
 public:
     Circle(const string& shapeName, double r) : Shape(shapeName), radius(r) {}
     void draw() override {
+        Shape::draw(); // Call base class draw (optional)
         cout << "Drawing a circle with radius " << radius << endl;
+        cout << endl;
     }
 };
 class Rectangle: public Shape {
@@ -76,7 +78,9 @@ private:
 public:
     Rectangle(const string& shapeName, double l, double w) : Shape(shapeName), length(l), width(w) {}
     void draw() override {
+            Shape::draw(); // Call base class draw (optional)
         cout << "Drawing a rectangle with length " << length << " and width " << width << endl;
+        cout << endl;
     }
 };
 class Triangle: public Shape {
@@ -86,7 +90,9 @@ private:
 public:
     Triangle(const string& shapeName, double b, double h) : Shape(shapeName), base(b), height(h) {}
     void draw() override {
+        Shape::draw(); // Call base class draw (optional)
         cout << "Drawing a triangle with base " << base << " and height " << height << endl;
+        cout << endl;
     }
 };
 class Square: public Shape {

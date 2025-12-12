@@ -31,19 +31,22 @@ class Payment {
     public:
         Payment() : amount(0.0), currency("USD"), status("Pending") {}
 
-        void setAmount(double amt) { amount = amt; }
-        void setCurrency(const string& curr) { currency = curr; }
-        void setStatus(const string& stat) { status = stat; }
+        void setAmount(double amt) { amount = amt; }  //must be none virtual
+        void setCurrency(const string& curr) { currency = curr; }// must be none virtual
+        void setStatus(const string& stat) { status = stat; }   // must be none virtual
 
-        double getAmount() const { return amount; }
-        string getCurrency() const { return currency; }
-        string getStatus() const { return status; }
+        double getAmount() const { return amount; }    // must be none virtual 
+        string getCurrency() const { return currency; } // must be none virtual 
+        string getStatus() const { return status; } // must be none virtual 
 
         // Decide which methods should be virtual and make them so.
         // ?? void processPayment() {
         //     // Implement processPayment in derived classes if needed
         // }
-        
+        virtual void processPayment() {
+            cout << "Processing payment of " << amount << " " << currency << endl;
+            status = "Processed";
+        };
 
         virtual ~Payment() {}
 
@@ -58,7 +61,7 @@ class CreditCardPayment : public Payment {
     public:
         CreditCardPayment(const string& cardType) : cardType(cardType) {}
 
-        void authorizePayment() {
+        void processPayment() override {
             cout << "Authorizing Credit Card Payment of " << getAmount() << " " << getCurrency() << " (Card Type: " << cardType << ")" << endl;
             setStatus("Authorized");
         }
@@ -76,7 +79,7 @@ class DebitCardPayment : public Payment {
     public:
         DebitCardPayment(const string& cardType) : cardType(cardType) {}
 
-        void verifyFunds() {
+        void  processPayment() override{
             cout << "Verifying Funds for Debit Card Payment of " << getAmount() << " " << getCurrency() << " (Card Type: " << cardType << ")" << endl;
             setStatus("Funds Verified");
         }
@@ -94,7 +97,7 @@ class PayPalPayment : public Payment {
     public:
         PayPalPayment(const string& email) : email(email) {}
 
-        void executePayment() {
+        void processPayment() override {
             cout << "Executing PayPal Payment of " << getAmount() << " " << getCurrency() << " (Email: " << email << ")" << endl;
             setStatus("Executed");
         }
@@ -124,7 +127,7 @@ int main() {
 
     for (Payment* payment : payments) {
         // Use polymorphism to process payments
-        // TODO:
+        payment->processPayment();
     }
 
     return 0;

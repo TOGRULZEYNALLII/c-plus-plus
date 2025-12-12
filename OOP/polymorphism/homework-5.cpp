@@ -46,27 +46,71 @@ using namespace std;
 
 
 /*  Solution:  */
+    class Employee {
+    protected:
+        string name;
+        double baseSalary;
+    public:
+        Employee(const string& n, double salary) : name(n), baseSalary(salary) {};
+        
+            virtual double calculateSalary() const {  
+            return baseSalary;
+        }
+        virtual void display() const {
+            cout << "Employee Name: " << name << ", Salary: " << calculateSalary() << endl;
+        }
+        virtual ~Employee() {}
+    };
+    
+    class Manager : public Employee {
+    private:
+        double bonus;
+    public:
+        Manager(const string& n, double salary, double bon) : Employee(n, salary), bonus(bon) {}
+        double calculateSalary() const override {
+            return baseSalary + bonus;
+        }
+        void display() const override {
+            cout << "Manager - Name: " << name << ", Salary: " << calculateSalary() << endl;
+        }
+    };
 
-
+    class Developer : public Employee {
+    private:
+        int numberOfProjects;
+    public:
+        Developer(const string& n, double salary, int projects) : Employee(n, salary), numberOfProjects(projects) {}
+        double calculateSalary() const override {
+            return baseSalary + 1000 * numberOfProjects;
+        }
+        void display() const override {
+            cout << "Developer - Name: " << name << ", Salary: " << calculateSalary() << endl;
+        }
+    
+    };
 
 
 
 int main() {
 
     /*  Example Usage  */
-    const int numEmployees = 3;
+    const int numEmployees = 4;
+    
     Employee* employees[numEmployees];
-
-    employees[0] = new Manager("Alice", 50000, 10000);
+    
+    employees[0] = new Manager("Alice", 50000, 10000) ;
     employees[1] = new Developer("Bob", 60000, 5);
     employees[2] = new Developer("Charlie", 55000, 3);
+    employees[3] = new Manager("David", 70000, 15000);
 
     for (int i = 0; i < numEmployees; i++) {
-        
+        employees[i]->display();
     }
 
     // Clean up
-    
-
+    for (int i = 0; i < numEmployees; i++) {
+        delete employees[i];
+        cout << "Memory for employee " << i + 1 << " deallocated." << endl;
+    }
     return 0;
 }
