@@ -98,7 +98,7 @@ using namespace std;
 class OnlyOneInstance {
     // your code
     private:
-        static OnlyOneInstance *instance;
+        static OnlyOneInstance *instance; 
         OnlyOneInstance() {}
 
     public:
@@ -132,11 +132,28 @@ OnlyOneInstance *OnlyOneInstance::instance = nullptr;
     5. Generate and cache prime numbers up to a specified limit.
     6. Check if a number is prime using the cached data.
 // */
-// static int primes[100] = {0};   // Static cache for Prime numbers
+static int primes[100] = {0};   // Static cache for Prime numbers
 
-// void generateAndCachePrimes(int limit) {
-//     // your code
-// }
+void generateAndCachePrimes(int limit) {
+    // your code
+    int count = 0;
+    for (int num = 2; num <= limit; ++num) {
+        bool isPrime = true;
+        for (int i = 2; i * i <= num; ++i) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+            else{
+                isPrime = true;
+            }
+        }
+        if (isPrime) {
+            primes[count++] = num;
+        }
+    }
+}
+
 
 
 
@@ -193,12 +210,32 @@ int main() {
 
     // Exercise-3: example usage
     // your code ;-)
-    OnlyOneInstance *obj1 = OnlyOneInstance::getInstance();
-    OnlyOneInstance *obj2 = OnlyOneInstance::getInstance();
+    // OnlyOneInstance *obj1 = OnlyOneInstance::getInstance();
+    // OnlyOneInstance *obj2 = OnlyOneInstance::getInstance();
 
 
     // Exercise-4: example usage
     // your code ;-)
-
-
+    generateAndCachePrimes(100);
+cout << "Generating and Caching Prime Numbers up to 100..." << endl;
+cout << "give a number!" << endl;
+    int x;
+    cin >> x;
+    cout << "Cached Prime Numbers up to 100:" << endl;
+    bool found = false;
+    for (int i = 0; i < 100 && primes[i] != 0; ++i) {
+        if(primes[i]==x){
+           
+            found = true;
+            break;
+        }
+            else{
+                found = false;
+            }
+    }
+    if(found){
+        cout << x << " is a prime number." << endl;
+    }else{
+        cout << x << " is not a prime number." << endl;
+    }
 }
