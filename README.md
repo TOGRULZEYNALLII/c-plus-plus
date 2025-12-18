@@ -38,10 +38,10 @@ The goal of this project is to demonstrate practical understanding of C++ throug
 c-plus-plus/
 │
 ├── OOP/ # Object-Oriented Programming examples
-├── linked list/ # Linked list implementation
-├── Funksional programming/ # Functional programming examples
-├── .vscode/ # VS Code configuration
-└── README.md
+  ├── linked list/ # Linked list implementation
+├── Funksional programming/functional  examples
+├── .vscode/ #            VS Code configuration
+└── README.md                                 .
 ---
 
 ## ▶️ How to Compile and Run
