@@ -35,20 +35,14 @@ The goal of this project is to demonstrate practical understanding of C++ throug
 
 ## 📂 Project Structure
 
-c-plus-plus/
-│
-├── OOP/ # Object-Oriented Programming examples
-  ├── linked list/ # Linked list implementation
-├── Funksional programming/functional  examples
-├── .vscode/ #            VS Code configuration
-└── README.md                                 .
+1. c-plus-plus/
 
+1.1 OOP/ # Object-Oriented Programming examples
+1.2 linked list/ # Linked list implementation
+1.3 Funksional programming/functional  examples
+1.4 .vscode/ #  VS Code configuration
+1.5  README.md
 
-
-
-
-
----
 ---
 
 ## ▶️ How to Compile and Run
