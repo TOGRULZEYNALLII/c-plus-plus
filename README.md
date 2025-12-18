@@ -42,6 +42,13 @@ c-plus-plus/
 ├── Funksional programming/functional  examples
 ├── .vscode/ #            VS Code configuration
 └── README.md                                 .
+
+
+
+
+
+
+---
 ---
 
 ## ▶️ How to Compile and Run
