@@ -49,11 +49,11 @@ The goal of this project is to demonstrate practical understanding of C++ throug
 
 Make sure you have **g++** installed (C++17 or newer recommended).
 
-bash
+How to Compile and Run
+Make sure you have g++ installed (C++17 or newer recommended).
 g++ -std=c++17 main.cpp -o main
 ./main
 Some examples are standalone and can be compiled individually.
-
 
 🎯 Purpose of This Repository
 
